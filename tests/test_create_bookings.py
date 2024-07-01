@@ -1,6 +1,8 @@
 from endpoints.create_booking import CreateBooking
+import pytest
 
 
+@pytest.mark.booking
 def test_create_booking(generate_firstname, generate_lastname, generate_totalprice, generate_additionalneeds):
     endpoint = CreateBooking()
     endpoint.send_request_for_create_booking(generate_firstname, generate_lastname,

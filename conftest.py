@@ -2,6 +2,10 @@ import pytest
 import random
 
 
+@pytest.fixture()
+def send_book_id():
+    return random.randint(1, 99)
+
 
 @pytest.fixture()
 def generate_firstname():
@@ -22,3 +26,7 @@ def generate_additionalneeds():
     additionalneeds = ['Whore', 'suck my dick', 'viskey', 'orange', 'marihuanna', 'relax']
     return random.choice(additionalneeds)
 
+@pytest.fixture()
+def password_swagger():
+    password = ["kham00", "amasnebes", "амирчиквсети", "999000999", "&(*^%(fsnsd(*&^%^"]
+    return random.choice(password)
