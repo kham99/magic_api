@@ -6,6 +6,15 @@ import random
 def send_book_id():
     return random.randint(1, 99)
 
+@pytest.fixture()
+def generate_username_swagger():
+    username = ['kham99', 'amasnebes', 'karatel00']
+    return random.choice(username)
+
+@pytest.fixture()
+def generate_password_swagger():
+    password = ['asfdn3242', "hishnik32423", 'nasd3248sdhf32']
+    return random.choice(password)
 
 @pytest.fixture()
 def generate_firstname():

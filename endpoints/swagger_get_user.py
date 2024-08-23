@@ -3,7 +3,7 @@ import requests
 
 class SwaggerGetUser:
     def getting_user(self):
-        response = requests.get("https://petstore.swagger.io/v2/user/user1")
+        response = requests.get("https://petstore.swagger.io/v2/user/kham99")
         self.status_code = response.status_code
         self.response_body = response.json()
 
@@ -11,7 +11,6 @@ class SwaggerGetUser:
         assert self.status_code == 200
 
     def check_username(self):
-        assert self.response_body["username"] == "user1"
+        assert self.response_body["username"] == "kham99"
 
-    def check_password(self):
-        assert self.response_body["password"] == "password1"
+

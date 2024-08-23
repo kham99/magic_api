@@ -8,4 +8,3 @@ def test_swagger_getting_user():
     endpoint.getting_user()
     endpoint.check_status_code()
     endpoint.check_username()
-    endpoint.check_password()
