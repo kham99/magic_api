@@ -1,19 +1,31 @@
 import requests
+from clients.http_client import HTTPClient
 
 
-class CreateBooking:
-    def send_request_for_create_booking(self, firstname, lastname, general_totalprice, general_additionalneeds):
+class CreateBooking(HTTPClient):
+
+    def __init__(self):
+        self._http_client = HTTPClient()
+
+    def send_request_for_create_booking(self, firstname, lastname, general_totalprice, general_additionalneeds, checkin,
+                                        checkout):
         headers = {"Content-Type": "application/json", "Accept": "*/*"}
         body = {"firstname": firstname, "lastname": lastname, "totalprice": general_totalprice, "depositpaid": True,
-                "bookingdates": {"checkin": "2024-06-07", "checkout": "2024-08-09"},
+                "bookingdates": {"checkin": checkin, "checkout": checkout},
                 "additionalneeds": general_additionalneeds}
-        response = requests.post("https://restful-booker.herokuapp.com/booking", json=body, headers=headers)
+
+
+        response = self._send_request(url="https://restful-booker.herokuapp.com/booking",
+                                       method="post",
+                                       headers=headers,
+                                       json=body
+                                       expected_status_code=200
+                                       )
+
         self.status = response.status_code
         self.response = response.json()
         return response
 
-    def check_request_status_code(self):
-        assert self.status == 200
 
     def check_booking_in_response_body(self):
         assert "booking" in self.response, "Тело ответа не содержит объект 'booking'"

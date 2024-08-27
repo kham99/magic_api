@@ -3,11 +3,12 @@ import pytest
 
 
 @pytest.mark.booking
-def test_create_booking(generate_firstname, generate_lastname, generate_totalprice, generate_additionalneeds):
+def test_create_booking(generate_firstname, generate_lastname, generate_totalprice, generate_additionalneeds, checkin,
+                        checkout):
     endpoint = CreateBooking()
     endpoint.send_request_for_create_booking(generate_firstname, generate_lastname,
-                                             generate_totalprice, generate_additionalneeds)
-    endpoint.check_request_status_code()
+                                             generate_totalprice, generate_additionalneeds, checkin, checkout,
+                                             )
     endpoint.check_booking_in_response_body()
     endpoint.check_lastname(generate_lastname)
     endpoint.check_additionalneeds(generate_additionalneeds)
