@@ -1,24 +1,28 @@
-import requests
+from clients.http_client import HTTPClient
 
 
-class CreateUser():
-    def create_new_user(self, password):
-        headers = {"Accept": "*/*", "accept": "application/json"}
+class CreateUser(HTTPClient):
+
+    def __init__(self):
+        self._http_client = HTTPClient()
+
+    def create_new_user(self, id, password, lastname, firstname, email, phone):
         body = [
   {
-    "id": 99,
+    "id": id,
     "username": "kham99",
-    "firstName": "Amir",
-    "lastName": "Khabiev",
-    "email": "netu@yandex.ru",
+    "firstName": firstname,
+    "lastName": lastname,
+    "email": email,
     "password": password,
-    "phone": "8999999999",
+    "phone": phone,
     "userStatus": 0
   }
 ]
-        response = requests.post("https://petstore.swagger.io/v2/user/createWithList", headers=headers, json=body)
+        response = self._send_request(url="https://petstore.swagger.io/v2/user/createWithList",
+                                      json=body,
+                                      method="post",
+                                      expected_status_code=200)
         self.response = response.json()
         self.code = response.status_code
-
-    def check_status_code(self):
-        assert self.code == 200
+        print(self.response)

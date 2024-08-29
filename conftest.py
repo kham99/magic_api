@@ -30,6 +30,10 @@ def generate_lastname():
     last_names = ['Smith', 'Johnson', 'Williams', "Petrov"]
     return random.choice(last_names)
 
+@pytest.fixture()
+def generate_email():
+    email = ['Smith66@google.com', 'Karatel99@yandex.ru', 'vaevictis@outlook.com']
+    return random.choice(email)
 
 @pytest.fixture()
 def generate_totalprice():
@@ -58,3 +62,8 @@ def generate_additionalneeds():
 def password_swagger():
     password = ["kham00", "amasnebes", "амир", "999000999", "&(*^%(fsnsd(*&^%^"]
     return random.choice(password)
+
+@pytest.fixture()
+def generate_phone():
+    phone = ["899999999999", "79627677709", "89002223344", "99999999999", "89182247954"]
+    return random.choice(phone)

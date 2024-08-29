@@ -1,15 +1,11 @@
+import allure
 from endpoints.receive_token_authorization import ReceiveToken
-import pytest
 
 
-@pytest.mark.booking
+@allure.title("Receive token")
+@allure.feature("Tests Booking")
+@allure.story('Post')
 def test_authorization():
     endpoint = ReceiveToken()
-    endpoint.send_request_for_authorization()
-    endpoint.check_response_status_is_ok()
+    endpoint._authorization()
     endpoint.check_token_in_response()
-
-
-
-
-
