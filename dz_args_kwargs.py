@@ -39,3 +39,13 @@ def process_data_sum(*args, **kwargs):
 
 
 print(process_data_sum(1, 3, 21, {3, 4, 5}, "fad", a=2, b=7, c="sdf", d=[2, 3, 4], e=9))
+
+
+
+
+
+class Rectangle:
+    rectangle1 = 1.1
+    rectangle2 = 2.2
+    rectangle3 = 2.2
+
