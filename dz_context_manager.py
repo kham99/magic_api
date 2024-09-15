@@ -6,7 +6,7 @@
 #     file.write("Hello, World!")
 from contextlib import contextmanager
 import time
-
+from functools import lru_cache
 class FileWriter:
 
     def __init__(self, file_name):
@@ -110,4 +110,38 @@ def func_test():
 
 
 func_test()
+
+
+# Декоратор для логирования вызовов функций
+# Создайте декоратор, который будет логировать вызовы функции: выводить имя функции и переданные ей аргументы.
+
+def log_calls(func):
+    def wrapper(*args, **kwargs):
+        print(f"Название функции: {func.__name__}")
+        print(f"Переданные аргументы: {args}, {kwargs}")
+        return func
+    return wrapper()
+
+
+@log_calls
+def example_function(a, b):
+    return a + b
+
+
+example_function("Test", "function")
+
+
+
+#  Задание 3: Декоратор для кэширования результата функции
+# Создайте декоратор, который будет кэшировать результат функции для заданных аргументов
+# и возвращать сохранённый результат при повторных вызовах с теми же аргументами.
+
+
+@lru_cache(maxsize=None)
+def expensive_computation(x, y):
+    return x * y
+
+
+expensive_computation(344, 324)
+
 
