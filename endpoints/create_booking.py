@@ -1,7 +1,7 @@
 from clients.http_client import HTTPClient
 
 
-class Booking(HTTPClient):
+class Booking:
 
     def __init__(self):
         self._http_client = HTTPClient()
@@ -11,7 +11,7 @@ class Booking(HTTPClient):
                 "bookingdates": {"checkin": checkin, "checkout": checkout},
                 "additionalneeds": general_additionalneeds}
 
-        response = self._send_request(url="https://restful-booker.herokuapp.com/booking",
+        response = self._http_client.post(url="https://restful-booker.herokuapp.com/booking",
                                       method="post",
                                       json=body,
                                       expected_status_code=200
